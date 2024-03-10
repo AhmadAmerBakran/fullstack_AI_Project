@@ -1,0 +1,60 @@
+﻿## .NET Core / .NET Standard / .NET Framework
+bin
+obj
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.dll
+*.exe
+*.pdb
+*.cache
+*.ico
+*.ngrok
+*.swp
+*.*~
+project.lock.json
+project.fragment.lock.json
+artifacts/
+**/[Rr]elease/**/
+**/[Dd]ebug/**/
+*.nupkg
+*.nuproj
+*.nuget.targets
+*.nuget.props
+*.log
+*.log.*
+packages/
+*.pfx
+*.snk
+
+# Rider
+.idea/
+*.sln.iml
+
+# User-specific files
+*.rsuser
+*.resharper
+*.DotSettings.user
+
+# OS generated files #
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Folder view configuration files
+Desktop.ini
+
+# Others
+*.swp
+*~.nib
+local.properties
+**/Properties/launchSettings.json
+appsettings.Development.json
+appsettings.Local.json
+azure*.json
+
+# VS Code directories
+.vscode/
+
