@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "aErkbVcp9H3lN0U+DEjr3DNC9Ht+31Q1qU9gX9CFtBETxW4AkCzU8Qz/aF8Ul711NdB93Q6Zu73STGhfw2Cvig==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Bruger\\RiderProjects\\fullstack_AI_Project\\Service\\Service.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Bruger\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
+    "C:\\Users\\Bruger\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\Bruger\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\Bruger\\.nuget\\packages\\npgsql\\8.0.2\\npgsql.8.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

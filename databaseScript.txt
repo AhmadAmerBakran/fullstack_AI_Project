@@ -1,0 +1,20 @@
+﻿-- Create the schema
+CREATE SCHEMA IF NOT EXISTS anonymous_post;
+
+-- Create the 'posts' table
+CREATE TABLE IF NOT EXISTS anonymous_post.posts (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    publish_date TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    post_image VARCHAR(255)
+);
+
+-- Create the 'comments' table
+CREATE TABLE IF NOT EXISTS anonymous_post.comments (
+    id SERIAL PRIMARY KEY,
+    post_id INT NOT NULL,
+    content TEXT NOT NULL,
+    comment_date TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    FOREIGN KEY (post_id) REFERENCES anonymous_post.posts(id) ON DELETE CASCADE
+);
