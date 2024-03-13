@@ -90,7 +90,11 @@ public class PostController : ControllerBase
 
         var translatedContent = await _translationService.TranslateTextAsync(post.Content, request.TargetLanguage);
 
-        return Ok(new { TranslatedText = translatedContent });
+        return Ok(new ResponseDto
+        {
+            MessageToClient = "Post fetched successfully",
+            ResponseData = translatedContent
+        });
     }
     
     [HttpGet("tts/{postId}")]

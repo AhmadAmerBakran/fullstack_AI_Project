@@ -1339,19 +1339,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bruger\\.nuget\\packages\\": {}
+    "C:\\Users\\dilbe\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bruger\\RiderProjects\\fullstack_AI_Project\\Service\\Service.csproj",
+      "projectUniqueName": "C:\\Users\\dilbe\\RiderProjects\\fullstack_AI_Project\\Service\\Service.csproj",
       "projectName": "Service",
-      "projectPath": "C:\\Users\\Bruger\\RiderProjects\\fullstack_AI_Project\\Service\\Service.csproj",
-      "packagesPath": "C:\\Users\\Bruger\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bruger\\RiderProjects\\fullstack_AI_Project\\Service\\obj\\",
+      "projectPath": "C:\\Users\\dilbe\\RiderProjects\\fullstack_AI_Project\\Service\\Service.csproj",
+      "packagesPath": "C:\\Users\\dilbe\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\dilbe\\RiderProjects\\fullstack_AI_Project\\Service\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Bruger\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\dilbe\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -1363,8 +1363,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Bruger\\RiderProjects\\fullstack_AI_Project\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\Bruger\\RiderProjects\\fullstack_AI_Project\\Infrastructure\\Infrastructure.csproj"
+            "C:\\Users\\dilbe\\RiderProjects\\fullstack_AI_Project\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\dilbe\\RiderProjects\\fullstack_AI_Project\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }

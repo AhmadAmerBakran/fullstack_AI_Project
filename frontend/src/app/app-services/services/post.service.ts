@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ResponseDto} from "../app-models/ResponseDto";
-import {AnonymousPost, Comment, CreateComment, CreatePost} from "../app-models/PostAndCommentModels";
+import {AnonymousPost, Comment, CreateComment, CreatePost, TranslateRequest} from "../app-models/PostAndCommentModels";
 import {environment} from "../../../environments/environment";
 
 @Injectable({
@@ -20,8 +20,11 @@ export class PostService {
     return this.http.get<ResponseDto<Comment[]>>(this.baseUrl + postId + '/comments');
   }
 
-  createComment(comment: CreateComment) : Observable<ResponseDto<CreateComment>> {
-    return this.http.post<ResponseDto<CreateComment>>(environment.apiUrl + '/api/comment/create', comment);
+
+
+  createComment(comment: {postId: number; content: any }, targetLanguage: string = 'en'): Observable<ResponseDto<CreateComment>> {
+    const params = new HttpParams().set('targetLanguage', targetLanguage);
+    return this.http.post<ResponseDto<CreateComment>>(environment.apiUrl + '/api/comment/create', comment, { params });
   }
 
   createPost(postData: CreatePost): Observable<ResponseDto<AnonymousPost>> {

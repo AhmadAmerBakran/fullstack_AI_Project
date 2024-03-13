@@ -21,7 +21,11 @@ export interface Comment {
 }
 
 export interface CreateComment {
-  blogId: number;
+  postId: number;
   content: string;
   commentDate: Date;
+}
+
+export interface TranslateRequest {
+  targetLanguage: string;
 }
