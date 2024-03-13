@@ -8,17 +8,22 @@ public class CommentService
 {
     private readonly ILogger<CommentService> _logger;
     private readonly ICommentRepository _commentRepository;
+    private readonly TranslationService _translationService;
 
-    public CommentService(ILogger<CommentService> logger, ICommentRepository commentRepository)
+
+    public CommentService(ILogger<CommentService> logger, ICommentRepository commentRepository, TranslationService translationService)
     {
         _logger = logger;
         _commentRepository = commentRepository;
+        _translationService = translationService;
     }
 
-    public Comment CreateComment(Comment comment)
+    public async Task<Comment> CreateComment(Comment comment, string targetLanguage = "en")
     {
         try
         {
+            comment.Content = await _translationService.TranslateTextAsync(comment.Content, targetLanguage);
+            
             return _commentRepository.CreateComment(comment.PostId, comment.Content);
         }
         catch (Exception ex)
@@ -40,4 +45,18 @@ public class CommentService
             throw;
         }
     }
+    
+    public Comment? GetCommentById(int id)
+    {
+        try
+        {
+            return _commentRepository.GetCommentById(id);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Error retrieving post by ID: {Message}", ex.Message);
+            throw;
+        }
+    }
+    
 }

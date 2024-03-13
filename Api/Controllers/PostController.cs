@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Api.Dtos;
 using Infrastructure.Models;
 using Microsoft.AspNetCore.Mvc;
 using Service;
@@ -10,19 +11,25 @@ namespace Api.Controllers;
 public class PostController : ControllerBase
 {
     private readonly PostService _service;
+    private readonly TranslationService _translationService;
+    private readonly TextToSpeechService _textToSpeechService;
 
-    public PostController(PostService service)
+
+    public PostController(PostService service, TranslationService translationService, TextToSpeechService textToSpeechService)
     {
         _service = service;
+        _translationService = translationService;
+        _textToSpeechService = textToSpeechService;
+
     }
     
     [HttpPost]
     [Route("create")]
-    public IActionResult CreateAnonymousPost([FromBody] AnonymousPost post)
+    public async Task<IActionResult> CreateAnonymousPost([FromBody] AnonymousPost post, [FromQuery] string targetLanguage = "en")
     {
         try
         {
-            var createdPost = _service.CreateAnonymousPost(post);
+            var createdPost = await _service.CreateAnonymousPost(post, targetLanguage);
             return Ok(new ResponseDto { MessageToClient = "Post created successfully", ResponseData = createdPost });
         }
         catch (ValidationException ex)
@@ -74,4 +81,34 @@ public class PostController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError, new ResponseDto { MessageToClient = ex.Message });
         }
     }
+    
+    [HttpPost("translate/{postId}")]
+    public async Task<IActionResult> TranslatePost(int postId, [FromBody] TranslateRequest request)
+    {
+        var post =  _service.GetAnonymousPostById(postId);
+        if (post == null) return NotFound("Post not found");
+
+        var translatedContent = await _translationService.TranslateTextAsync(post.Content, request.TargetLanguage);
+
+        return Ok(new { TranslatedText = translatedContent });
+    }
+    
+    [HttpGet("tts/{postId}")]
+    public async Task<IActionResult> ReadPostAloud(int postId)
+    {
+        var post =  _service.GetAnonymousPostById(postId);
+        if (post == null) return NotFound("Post not found");
+
+        try
+        {
+            var audioBytes = await _textToSpeechService.ConvertTextToSpeechAsync(post.Content);
+            return File(audioBytes, "audio/wav");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Error converting text to speech");
+        }
+    }
+
 }
+
