@@ -4,6 +4,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PostService } from "../../../app-services/services/post.service";
 import { CreatePost } from "../../../app-services/app-models/PostAndCommentModels";
 import { ClientMessageService } from "../../../app-services/services/client-message.service";
+import {LanguageService} from "../../../app-services/services/language.service";
+import {Language} from "../../../app-services/app-models/LanguageAndQueries";
 
 @Component({
   selector: 'app-create-post-modal',
@@ -11,18 +13,23 @@ import { ClientMessageService } from "../../../app-services/services/client-mess
   styleUrls: ['./create-post-modal.component.scss'],
 })
 export class CreatePostModalComponent implements OnInit {
+  languages: Language[];
 
   postForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
     content: new FormControl('', [Validators.required]),
     postImage: new FormControl('', [Validators.required]),
+    language: new FormControl('en', [Validators.required]),
   });
 
   constructor(
     private modalCtrl: ModalController,
     private postService: PostService,
-    private clientMessage: ClientMessageService
-  ) { }
+    private clientMessage: ClientMessageService,
+    private languageService: LanguageService
+  ) {
+    this.languages = this.languageService.languages;
+  }
 
   ngOnInit() {}
 
@@ -32,10 +39,11 @@ export class CreatePostModalComponent implements OnInit {
 
   submitPost() {
     if (this.postForm.valid) {
-      const post: CreatePost = {
+      const post: CreatePost & { targetLanguage: string } = {
         title: this.postForm.value.title!,
         content: this.postForm.value.content!,
         postImage: this.postForm.value.postImage!,
+        targetLanguage: this.postForm.value.language!,
       };
 
       this.postService.createPost(post).subscribe({

@@ -22,6 +22,9 @@
       </ion-card-header>
 
       <ion-card-content>
+        <ion-button (click)="translatePost(post.id)">Translate</ion-button>
+        <ion-button (click)="readPostAloud(post.id)">Listen</ion-button>
+
         <div class="post-content">
           <h1>{{post.content}}</h1>
         </div>

@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5e47ed8f-d88f-4eed-b552-632d37bdd5aa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Controllers/PostController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Controllers/PostController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.pdb" afterDir="false" />
@@ -17,10 +18,11 @@
       <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/apphost.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/ref/Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/ref/Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/refint/Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/refint/Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app-services/services/post.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app-services/services/post.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/home/components/create-post-modal/create-post-modal.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/home/components/create-post-modal/create-post-modal.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/home/components/create-post-modal/create-post-modal.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/home/components/create-post-modal/create-post-modal.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/home/home.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/home/home.page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/home/home.page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/home/home.page.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/home/home.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/home/home.page.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/environments/environment.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,11 +37,16 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="development" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2daVJsN8P5NG0EDYu7PJpQV3hYq" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -52,7 +59,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "initial-frontend",
+    "git-widget-placeholder": "integrating-front-and-backend",
     "last_opened_file_path": "C:/Users/Bruger/RiderProjects/fullstack_AI_Project/frontend/src/assets/images",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -80,6 +87,7 @@
       <option name="presentableId" value="Default" />
       <updated>1710246108407</updated>
       <workItem from="1710246109549" duration="18972000" />
+      <workItem from="1710296600750" duration="8904000" />
     </task>
     <servers />
   </component>
