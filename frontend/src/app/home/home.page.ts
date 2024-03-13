@@ -17,11 +17,11 @@ import {LanguageService} from "../app-services/services/language.service";
 })
 export class HomePage implements OnInit{
 
-  languages: Language[] | undefined;
+  languages: Language[] ;
   posts: AnonymousPost[] = [];
   comments: Comment[] = [];
   commentForms: { [key: number]: FormGroup } = {};
-
+  newCommentForm: FormGroup;
   constructor(
     private postService: PostService,
     private clientMessage: ClientMessageService,
@@ -30,7 +30,12 @@ export class HomePage implements OnInit{
     private languageService: LanguageService,
     ) {
     this.languages = this.languageService.languages;
+    this.newCommentForm = new FormGroup({
+      content: new FormControl('', [Validators.required]),
+      language: new FormControl('en', [Validators.required])
+    });
   }
+
 
 
   ngOnInit(): void {
@@ -46,7 +51,6 @@ export class HomePage implements OnInit{
         this.clientMessage.showError(err.error?.messageToClient)
       }
     });
-
     this.postService.getAllPosts().subscribe({
       next: (response) => {
         if (response.responseData) {
@@ -65,13 +69,6 @@ export class HomePage implements OnInit{
       error: (err) => {
         this.clientMessage.showError(err.error?.message);
       }
-    });
-
-    this.posts.forEach(post => {
-      this.commentForms[post.id] = new FormGroup({
-        content: new FormControl('', [Validators.required]),
-        language: new FormControl('en', [Validators.required]) // Adding language selection
-      });
     });
 
   }
@@ -95,33 +92,29 @@ export class HomePage implements OnInit{
   }
 
   submitComment(postId: number): void {
-    const commentForm = this.commentForms[postId];
-    if (commentForm.valid) {
+    if (this.newCommentForm.valid) {
+      const content = this.newCommentForm.get('content')?.value;
+      const targetLanguage = this.newCommentForm.get('language')?.value;
 
-      const targetLanguage = commentForm.value.language;
-      const content = commentForm.value.content;
-
-      // Construct the comment object correctly here
-      const commentToSend: { postId: number; content: any } = {
+      const commentData: CreateComment & { targetLanguage?: string } = {
         postId: postId,
-        content: content
+        content: content,
+        targetLanguage: targetLanguage
       };
 
-        this.postService.createComment(commentToSend, targetLanguage).subscribe({
-          next: (response) => {
-            this.clientMessage.showInfo("Comment successfully added");
-            this.loadComments(postId);
-            commentForm.reset(); // Reset the form after submission
-          },
-          error: (error) => {
-            console.error("Error creating comment:", error);
-            this.clientMessage.showError("Failed to add comment. Please try again.");
-          }
-        });
-      }
+      this.postService.createComment(commentData).subscribe({
+        next: (response) => {
+          this.clientMessage.showInfo("Comment successfully added");
+          this.loadComments(postId);
+          this.newCommentForm.reset(); // Reset the form after submission
+        },
+        error: (error) => {
+          console.error("Error creating comment:", error);
+          this.clientMessage.showError("Failed to add comment. Please try again.");
+        }
+      });
     }
-
-
+  }
 
   async presentCreatePostModal() {
     const modal = await this.modalCtrl.create({

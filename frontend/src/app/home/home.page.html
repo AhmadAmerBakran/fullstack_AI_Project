@@ -64,17 +64,20 @@
           </ion-item>
         </ion-list>
       </div>
-        <form [formGroup]="commentForms[post.id]" (ngSubmit)="submitComment(post.id)">
+        <form [formGroup]="newCommentForm" (ngSubmit)="submitComment(post.id)">
           <ion-item>
-            <ion-input type="text" formControlName="content" placeholder="Write a comment..."></ion-input>
+            <ion-label position="floating">Write a comment...</ion-label>
+            <ion-textarea formControlName="content"></ion-textarea>
           </ion-item>
           <ion-item>
             <ion-label>Language</ion-label>
             <ion-select formControlName="language" placeholder="Select Language">
-              <ion-select-option *ngFor="let lang of languages" [value]="lang.code">{{ lang.name }}</ion-select-option>
+              <ion-select-option *ngFor="let lang of languages" [value]="lang.code">
+                {{ lang.name }}
+              </ion-select-option>
             </ion-select>
           </ion-item>
-          <ion-button type="submit">Comment</ion-button>
+          <ion-button type="submit" expand="block">Post Comment</ion-button>
         </form>
       </ion-card>
     </ion-list>

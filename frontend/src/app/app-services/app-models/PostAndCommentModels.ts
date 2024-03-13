@@ -13,6 +13,7 @@ export interface CreatePost {
   postImage: string;
 }
 
+
 export interface Comment {
   id: number;
   postId: number;
@@ -23,7 +24,6 @@ export interface Comment {
 export interface CreateComment {
   postId: number;
   content: string;
-  commentDate: Date;
 }
 
 export interface TranslateRequest {
