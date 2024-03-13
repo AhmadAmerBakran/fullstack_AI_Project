@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e47ed8f-d88f-4eed-b552-632d37bdd5aa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Api/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Api/bin/Debug/net8.0/Api.pdb" afterDir="false" />
@@ -17,6 +17,10 @@
       <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/apphost.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/ref/Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/ref/Api.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Api/obj/Debug/net8.0/refint/Api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Api/obj/Debug/net8.0/refint/Api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/home/home.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/home/home.page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/home/home.page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/home/home.page.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/home/home.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/home/home.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/environments/environment.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +41,9 @@
   "associatedIndex": 5
 }]]></component>
   <component name="ProjectId" id="2daVJsN8P5NG0EDYu7PJpQV3hYq" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -46,7 +53,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "initial-frontend",
-    "last_opened_file_path": "C:/Users/Bruger/RiderProjects/fullstack_AI_Project",
+    "last_opened_file_path": "C:/Users/Bruger/RiderProjects/fullstack_AI_Project/frontend/src/assets/images",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -56,6 +63,14 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Bruger\RiderProjects\fullstack_AI_Project\frontend\src\assets\images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Bruger\RiderProjects\fullstack_AI_Project\frontend\src\assets\images" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -64,7 +79,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1710246108407</updated>
-      <workItem from="1710246109549" duration="11587000" />
+      <workItem from="1710246109549" duration="18972000" />
     </task>
     <servers />
   </component>

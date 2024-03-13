@@ -6,9 +6,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-card *ngFor="let post of posts">
+<ion-content style="--background: no-repeat center/cover url('/assets/images/background.jpg');">
+  <div class="posts-container">
+    <ion-list style="background-color: transparent">
+      <ion-card style="margin: 50px; padding: 25px; border-radius: 15px" *ngFor="let post of posts">
       <ion-card-header>
         <ion-item lines="none">
           <ion-icon style="font-size: 50px" name="person-circle" slot="start"></ion-icon>
@@ -57,8 +58,9 @@
         </ion-item>
         <ion-button (click)="submitComment(post.id)">Comment</ion-button>
       </form>
-    </ion-card>
-  </ion-list>
+      </ion-card>
+    </ion-list>
+  </div>
   <router-outlet></router-outlet>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="presentCreatePostModal()">
