@@ -8,17 +8,24 @@ public class PostService
 {
     private readonly ILogger<PostService> _logger;
     private readonly IPostRepository _postRepository;
+    private readonly TranslationService _translationService;
 
-    public PostService(ILogger<PostService> logger, IPostRepository postRepository)
+
+    public PostService(ILogger<PostService> logger, IPostRepository postRepository, TranslationService translationService)
     {
         _logger = logger;
         _postRepository = postRepository;
+        _translationService = translationService;
+
     }
 
-    public AnonymousPost CreateAnonymousPost(AnonymousPost post)
+    public async Task<AnonymousPost> CreateAnonymousPost(AnonymousPost post, string targetLanguage = "en")
     {
         try
         {
+            post.Title = await _translationService.TranslateTextAsync(post.Title, targetLanguage);
+            post.Content = await _translationService.TranslateTextAsync(post.Content, targetLanguage);
+            
             return _postRepository.CreateAnonymousPost(post.Title, post.Content, post.PostImage);
         }
         catch (Exception ex)

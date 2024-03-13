@@ -5,10 +5,14 @@ using Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var configuration = builder.Configuration;
+
+
 // Add services to the container.
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddControllers();
 
+builder.Services.AddHttpClient<TranslationService>();
 
 builder.Services.AddNpgsqlDataSource(Utilities.ProperlyFormattedConnectionString,
     dataSourceBuilder => dataSourceBuilder.EnableParameterLogging());
@@ -17,6 +21,22 @@ builder.Services.AddSingleton<ICommentRepository, CommentRepository>();
 
 builder.Services.AddSingleton<PostService>();
 builder.Services.AddSingleton<CommentService>();
+builder.Services.AddSingleton<TranslationService>();
+
+builder.Services.AddSingleton<LanguageDetectionService>(serviceProvider =>
+{
+    string endpoint = Environment.GetEnvironmentVariable("TextAnalyticsEndpoint");
+    string apiKey = Environment.GetEnvironmentVariable("TextAnalyticsApiKey");
+    return new LanguageDetectionService(endpoint, apiKey);
+});
+
+builder.Services.AddSingleton<TextToSpeechService>(serviceProvider =>
+{
+    string subscriptionKey = Environment.GetEnvironmentVariable("TextToSpeech:SubscriptionKey");
+    string serviceRegion = configuration["northeurope"];
+    var languageDetectionService = serviceProvider.GetRequiredService<LanguageDetectionService>();
+    return new TextToSpeechService(subscriptionKey, serviceRegion, languageDetectionService);
+});
 
 
 // CORS configuration

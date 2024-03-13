@@ -57,4 +57,22 @@ FROM anonymous_post.comments WHERE post_id = @PostId;";
             throw new Exception("An error occurred while retrieving comments.", ex);
         }
     }
+    
+    public Comment? GetCommentById(int id)
+    {
+        var sql = $@"
+SELECT  id as {nameof(Comment.Id)}, post_id as {nameof(Comment.PostId)},
+content as {nameof(Comment.Content)} FROM anonymous_post.comments
+WHERE id = @Id;";
+
+        try
+        {
+            using var connection = _dataSource.OpenConnection();
+            return connection.QueryFirstOrDefault<Comment>(sql, new { Id = id });
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("An error occurred while fetching the comment.", ex);
+        }
+    }
 }

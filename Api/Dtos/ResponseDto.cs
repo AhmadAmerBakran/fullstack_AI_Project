@@ -1,4 +1,4 @@
-﻿namespace Api;
+﻿namespace Api.Dtos;
 
 public class ResponseDto
 {
