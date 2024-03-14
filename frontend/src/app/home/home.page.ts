@@ -43,18 +43,6 @@ export class HomePage implements OnInit{
       next: (response) => {
         if (response.responseData) {
           this.posts = response.responseData;
-        } else {
-          this.clientMessage.showInfo(response.messageToClient!)
-        }
-      },
-      error: (err) => {
-        this.clientMessage.showError(err.error?.messageToClient)
-      }
-    });
-    this.postService.getAllPosts().subscribe({
-      next: (response) => {
-        if (response.responseData) {
-          this.posts = response.responseData;
           this.posts.forEach(post => {
             this.commentForms[post.id] = new FormGroup({
               postId: new FormControl(post.id, [Validators.required]),
@@ -70,7 +58,6 @@ export class HomePage implements OnInit{
         this.clientMessage.showError(err.error?.message);
       }
     });
-
   }
 
   loadComments(postId: number): void {
@@ -105,8 +92,12 @@ export class HomePage implements OnInit{
       this.postService.createComment(commentData).subscribe({
         next: (response) => {
           this.clientMessage.showInfo("Comment successfully added");
+          const post = this.posts.find(p => p.id === postId);
+          if (post) {
+            post.commentCount += 1;
+          }
           this.loadComments(postId);
-          this.newCommentForm.reset(); // Reset the form after submission
+          this.newCommentForm.reset();
         },
         error: (error) => {
           console.error("Error creating comment:", error);
@@ -150,7 +141,7 @@ export class HomePage implements OnInit{
     });
   }
 
-  async presentTranslateModal(textToTranslate: string, itemId: number, isPost: boolean = true) {
+  async presentTranslateModal(textToTranslate: AnonymousPost | string, itemId: number, isPost: boolean = true) {
     const modal = await this.modalCtrl.create({
       component: TranslateModalComponent,
       componentProps: {
@@ -166,7 +157,8 @@ export class HomePage implements OnInit{
         if (isPost) {
           const postIndex = this.posts.findIndex(post => post.id === itemId);
           if (postIndex !== -1) {
-            this.posts[postIndex].content = translatedText;
+            this.posts[postIndex].title = translatedText.title;
+            this.posts[postIndex].content = translatedText.content;
             this.comments = [...this.comments];
           }
         } else {
@@ -184,7 +176,6 @@ export class HomePage implements OnInit{
 
   playPostAudio(postId: number): void {
     this.translateService.readPostAloud(postId).subscribe(audioBlob => {
-      // Create a new Blob URL for the audio file
       const audioUrl = URL.createObjectURL(audioBlob);
       const audio = new Audio(audioUrl);
       audio.play();

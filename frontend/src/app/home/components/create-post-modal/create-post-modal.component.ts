@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PostService } from "../../../app-services/services/post.service";
@@ -37,12 +37,28 @@ export class CreatePostModalComponent  {
     this.modalCtrl.dismiss(data);
   }
 
+  isValidHttpUrl(string: string) {
+    let url;
+
+    try {
+      url = new URL(string);
+    } catch (_) {
+      return false;
+    }
+
+    return url.protocol === "http:" || url.protocol === "https:";
+  }
   submitPost() {
     if (this.postForm.valid) {
+      let postImage = this.postForm.value.postImage || 'assets/images/default.png';
+      if (!this.isValidHttpUrl(postImage)) {
+        postImage = 'assets/images/default.png';
+      }
+
       const post: CreatePost & { targetLanguage: string } = {
         title: this.postForm.value.title!,
         content: this.postForm.value.content!,
-        postImage: this.postForm.value.postImage!,
+        postImage: postImage,
         targetLanguage: this.postForm.value.language!,
       };
 
@@ -59,4 +75,5 @@ export class CreatePostModalComponent  {
       this.clientMessage.showWarning('Please fill in all required fields.');
     }
   }
+
 }

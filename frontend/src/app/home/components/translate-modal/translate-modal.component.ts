@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ModalController} from "@ionic/angular";
 import {TranslateModalService} from "../../../app-services/services/translate-modal.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AnonymousPost} from "../../../app-services/app-models/PostAndCommentModels";
 
 @Component({
   selector: 'app-translate-modal',
@@ -25,7 +26,7 @@ export class TranslateModalComponent   {
   ) { }
 
 
-  dismissModal(translatedData?: { itemId: number, isPost: boolean, translatedText: string }) {
+  dismissModal(translatedData?: { itemId: number, isPost: boolean, translatedText: AnonymousPost | string }) {
     this.modalCtrl.dismiss(translatedData);
   }
 
@@ -38,7 +39,7 @@ export class TranslateModalComponent   {
           next: (response) => {
             console.log('Translation:', response.responseData);
             this.dismissModal({ itemId: this.itemId, isPost: true, translatedText: response.responseData || 'Fallback text or empty string if no translation'});
-          },
+            },
           error: (error) => {
             console.error('Error translating post:', error);
           }

@@ -88,12 +88,13 @@ public class PostController : ControllerBase
         var post =  _service.GetAnonymousPostById(postId);
         if (post == null) return NotFound("Post not found");
 
-        var translatedContent = await _translationService.TranslateTextAsync(post.Content, request.TargetLanguage);
+        post.Title = await _translationService.TranslateTextAsync(post.Title, request.TargetLanguage);
+        post.Content = await _translationService.TranslateTextAsync(post.Content, request.TargetLanguage);
 
         return Ok(new ResponseDto
         {
             MessageToClient = "Post fetched successfully",
-            ResponseData = translatedContent
+            ResponseData = post
         });
     }
     
@@ -113,6 +114,5 @@ public class PostController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError, "Error converting text to speech");
         }
     }
-
 }
 

@@ -26,6 +26,3 @@ export interface CreateComment {
   content: string;
 }
 
-export interface TranslateRequest {
-  targetLanguage: string;
-}

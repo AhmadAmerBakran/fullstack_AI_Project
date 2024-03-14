@@ -1,10 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <div class="flex-spacer"></div>
-    <ion-title>Welcome To Anonymous Wall</ion-title>
-    <div class="flex-spacer"></div>
+    <ion-title class="ion-text-center">Express Your Opinion Freely!</ion-title>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content style="--background: no-repeat center/cover url('/assets/images/background.jpg');">
   <div class="posts-container">
@@ -18,7 +17,7 @@
             <p>{{ post.publishDate | timeAgo }}</p>
             <h1>{{ post.title }}</h1>
           </ion-label>
-          <ion-button (click)="presentTranslateModal(post.content, post.id, true)" fill="clear" color="secondary" >
+          <ion-button (click)="presentTranslateModal(post, post.id, true)" fill="clear" color="secondary" >
             <ion-icon slot="icon-only" name="language-outline"></ion-icon>
           </ion-button>
           <ion-button fill="clear" color="secondary" (click)="playPostAudio(post.id)" >
