@@ -1,16 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <div class="flex-spacer"></div>
-    <ion-title>Welcome To Anonymous Wall</ion-title>
-    <div class="flex-spacer"></div>
+    <ion-title class="ion-text-center">Express Your Opinion Freely!</ion-title>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content style="--background: no-repeat center/cover url('/assets/images/background.jpg');">
   <div class="posts-container">
     <ion-list style="background-color: transparent">
       <ion-card style="margin: 50px; padding: 25px; border-radius: 15px" *ngFor="let post of posts">
-      <ion-card-header>
+        <ion-card-header>
         <ion-item lines="none">
           <ion-icon style="font-size: 50px" name="person-circle" slot="start"></ion-icon>
           <ion-label>
@@ -18,6 +17,12 @@
             <p>{{ post.publishDate | timeAgo }}</p>
             <h1>{{ post.title }}</h1>
           </ion-label>
+          <ion-button (click)="presentTranslateModal(post, post.id, true)" fill="clear" color="secondary" >
+            <ion-icon slot="icon-only" name="language-outline"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" color="secondary" (click)="playPostAudio(post.id)" >
+            <ion-icon slot="icon-only" name="volume-high-outline"></ion-icon>
+          </ion-button>
         </ion-item>
       </ion-card-header>
 
@@ -49,15 +54,30 @@
               <p>{{ comment.commentDate | timeAgo }}</p>
               <p>{{ comment.content }}</p>
             </ion-label>
+            <ion-button (click)="presentTranslateModal(comment.content, comment.id, false)" fill="clear" color="secondary" >
+              <ion-icon slot="icon-only" name="language-outline"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" color="secondary" (click)="playCommentAudio(comment.id)">
+              <ion-icon slot="icon-only" name="volume-high-outline"></ion-icon>
+            </ion-button>
           </ion-item>
         </ion-list>
       </div>
-      <form [formGroup]="commentForms[post.id]">
-        <ion-item>
-          <ion-input type="text" formControlName="content" placeholder="Write a comment..."></ion-input>
-        </ion-item>
-        <ion-button (click)="submitComment(post.id)">Comment</ion-button>
-      </form>
+        <form [formGroup]="newCommentForm" (ngSubmit)="submitComment(post.id)">
+          <ion-item>
+            <ion-label position="floating">Write a comment...</ion-label>
+            <ion-textarea formControlName="content"></ion-textarea>
+          </ion-item>
+          <ion-item>
+            <ion-label>Language</ion-label>
+            <ion-select formControlName="language" placeholder="Select Language">
+              <ion-select-option *ngFor="let lang of languages" [value]="lang.code">
+                {{ lang.name }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-button type="submit" expand="block">Post Comment</ion-button>
+        </form>
       </ion-card>
     </ion-list>
   </div>

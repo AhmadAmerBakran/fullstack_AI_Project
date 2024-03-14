@@ -13,10 +13,16 @@
       <ion-input type="text" formControlName="title"></ion-input>
     </ion-item>
     <ion-item>
+      <ion-label>Language</ion-label>
+      <ion-select formControlName="language" placeholder="Select one">
+        <ion-select-option *ngFor="let language of languages" [value]="language.code">{{language.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
       <ion-label position="floating">Content</ion-label>
       <ion-textarea formControlName="content"></ion-textarea>
     </ion-item>
-    <!-- New input for the image URL -->
     <ion-item>
       <ion-label position="floating">Image URL</ion-label>
       <ion-input type="url" formControlName="postImage"></ion-input>

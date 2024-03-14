@@ -1,5 +1,4 @@
-﻿using Azure.AI.TextAnalytics;
-using Microsoft.CognitiveServices.Speech;
+﻿using Microsoft.CognitiveServices.Speech;
 
 namespace Service;
 
@@ -45,17 +44,16 @@ public class TextToSpeechService
         var voiceMap = new Dictionary<string, string>
         {
             { "en", "en-US-JennyNeural" },
-            { "ar", "ar-EG-HodaNeural" },
+            { "ar", "ar-LB-LaylaNeural" },
             { "da", "da-DK-ChristelNeural" },
-            { "es", "es-ES-AlvaroNeural" }, // Spanish
-            { "fr", "fr-FR-DeniseNeural" }, // French
-            { "de", "de-DE-KatjaNeural" },  // German
-            { "it", "it-IT-ElsaNeural" },    // Italian
-            { "ja", "ja-JP-NanamiNeural" },  // Japanese
-            { "pt", "pt-BR-FranciscaNeural" }, // Portuguese (Brazil)
-            { "zh", "zh-CN-XiaoxiaoNeural" }, // Chinese (Simplified)
+            { "es", "es-ES-AlvaroNeural" },
+            { "fr", "fr-FR-DeniseNeural" },
+            { "de", "de-DE-KatjaNeural" },
+            { "it", "it-IT-ElsaNeural" },
+            { "ja", "ja-JP-NanamiNeural" },
+            { "pt", "pt-BR-FranciscaNeural" },
+            { "zh", "zh-CN-XiaoxiaoNeural" },
             { "hi", "hi-IN-SwaraNeural" }, 
-            // Add more language code to voice mappings here
         };
 
         return voiceMap.TryGetValue(languageCode, out var voiceName) ? voiceName : "en-US-JennyNeural";

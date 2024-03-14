@@ -72,7 +72,11 @@ public class CommentController : ControllerBase
         }
 
         var translatedContent = await _translationService.TranslateTextAsync(comment.Content, request.TargetLanguage);
-        return Ok(new { TranslatedText = translatedContent });
+        return Ok(new ResponseDto()
+        { 
+            MessageToClient = "Comment fetched successfully",
+            ResponseData =  translatedContent 
+        });
     }
     
     [HttpGet("tts/{commentId}")]

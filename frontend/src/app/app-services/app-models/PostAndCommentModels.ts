@@ -13,6 +13,7 @@ export interface CreatePost {
   postImage: string;
 }
 
+
 export interface Comment {
   id: number;
   postId: number;
@@ -21,7 +22,7 @@ export interface Comment {
 }
 
 export interface CreateComment {
-  blogId: number;
+  postId: number;
   content: string;
-  commentDate: Date;
 }
+

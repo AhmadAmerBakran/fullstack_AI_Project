@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Translate</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="translateForm" (ngSubmit)="submitTranslation()">
+    <ion-item>
+      <ion-label position="floating">Target Language</ion-label>
+      <ion-select formControlName="targetLanguage" placeholder="Select one">
+        <ion-select-option value="en">English</ion-select-option>
+        <ion-select-option value="es">Spanish</ion-select-option>
+        <ion-select-option value="fr">French</ion-select-option>
+        <ion-select-option value="de">German</ion-select-option>
+        <ion-select-option value="it">Italian</ion-select-option>
+        <ion-select-option value="ja">Japanese</ion-select-option>
+        <ion-select-option value="zh">Chinese</ion-select-option>
+        <ion-select-option value="ru">Russian</ion-select-option>
+        <ion-select-option value="ar">Arabic</ion-select-option>
+        <ion-select-option value="ko">Korean</ion-select-option>
+        <ion-select-option value="pt">Portuguese</ion-select-option>
+        <ion-select-option value="hi">Hindi</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button type="submit" expand="block">Translate</ion-button>
+  </form>
+</ion-content>
+
